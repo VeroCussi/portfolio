@@ -20,7 +20,7 @@ export default function HomePage() {
         cvLabel="Download My CV"
       />
 
-      <Section title="Projects">
+      <Section id="projects" title="Projects">
         {projectsEn.map((p) => (
           <ProjectCard key={p.title} image={p.image} title={p.title} description={p.description} techIcons={p.techIcons} buttons={p.buttons} />
         ))}

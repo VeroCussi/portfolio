@@ -4,10 +4,12 @@ import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 import { projectsFr } from "@/data/projects-fr";
 import Image from "next/image";
+import GsapEffects from "@/components/GsapEffects";
 
 export default function HomeFrPage() {
   return (
     <div className="min-h-screen pb-12 bg-[var(--background)] text-[var(--foreground)]">
+      <GsapEffects />
       <Navbar locale="fr" />
       <Header
         title="Salut ! Je suis Verónica Cussi"

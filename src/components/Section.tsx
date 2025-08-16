@@ -1,12 +1,13 @@
 type SectionProps = {
   title: string;
   children: React.ReactNode;
+  id?: string;
 };
 
-export default function Section({ title, children }: SectionProps) {
+export default function Section({ title, children, id }: SectionProps) {
   return (
-    <section className="w-full max-w-5xl mx-auto mt-6 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-black/10 dark:border-white/15 p-6">
-      <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-4">{title}</h2>
+    <section id={id} className="w-full max-w-5xl mx-auto mt-10 rounded-3xl bg-white/60 dark:bg-zinc-900/60 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-sm backdrop-blur">
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-4">{title}</h2>
       {children}
     </section>
   );
