@@ -6,9 +6,21 @@ type SectionProps = {
 
 export default function Section({ title, children, id }: SectionProps) {
   return (
-    <section id={id} className="w-full max-w-5xl mx-auto mt-10 rounded-3xl bg-white/60 dark:bg-zinc-900/60 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-sm backdrop-blur">
-      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-4">{title}</h2>
-      {children}
+    <section id={id} className="w-full max-w-5xl mx-auto mt-16 px-6">
+      <div className="mb-12 text-center">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-mono font-bold mb-4"
+            style={{ color: 'var(--ink)' }}>
+          {title}
+        </h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-violet to-cyan mx-auto rounded-full" />
+      </div>
+      <div className="backdrop-blur-sm border rounded-2xl p-8 md:p-12 shadow-card"
+           style={{ 
+             backgroundColor: 'rgba(255, 255, 255, 0.6)',
+             borderColor: 'var(--grid)'
+           }}>
+        {children}
+      </div>
     </section>
   );
 }

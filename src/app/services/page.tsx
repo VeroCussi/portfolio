@@ -1,85 +1,119 @@
-import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import ServicesContent, { type ServiceItem, type FAQItem } from "./_components/ServicesContent";
-// Icons are referenced by key inside the client component to avoid passing functions
+import Section from "@/components/Section";
+import GlitchTitle from "../_components/GlitchTitle";
+import TypeHeading from "../_components/TypeHeading";
+import ServiceCard from "../_components/ServiceCard";
+import RetroButton from "../_components/RetroButton";
+import NeonBadge from "../_components/NeonBadge";
+import { 
+  Globe, 
+  ShoppingCart, 
+  Bot, 
+  Wrench, 
+  Rocket, 
+  LifeBuoy,
+  ArrowRight,
+  Sparkles
+} from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Services | Veronica Cussi",
-  description:
-    "Modern web development services: marketing sites, e‑commerce, AI chatbots, custom apps, optimization and maintenance.",
-};
+const services = [
+  {
+    icon: Globe,
+    title: "Sitios Vitrina",
+    desc: "Sitios web profesionales y atractivos que representan perfectamente tu marca y conectan con tu audiencia.",
+    items: [
+      "Diseño responsive y moderno",
+      "Optimización SEO básica",
+      "Integración con redes sociales",
+      "Panel de administración intuitivo"
+    ],
+    ctaText: "Ver ejemplos",
+    ctaHref: "/#projects"
+  },
+  {
+    icon: ShoppingCart,
+    title: "E-commerce",
+    desc: "Tiendas online completas con todas las funcionalidades necesarias para vender productos o servicios.",
+    items: [
+      "Catálogo de productos completo",
+      "Sistema de pagos seguro",
+      "Gestión de inventario",
+      "Reportes de ventas"
+    ],
+    ctaText: "Consultar",
+    ctaHref: "/contact"
+  },
+  {
+    icon: Bot,
+    title: "Chatbots & IA",
+    desc: "Soluciones inteligentes que automatizan la atención al cliente y mejoran la experiencia del usuario.",
+    items: [
+      "Chatbots personalizados",
+      "Integración con WhatsApp",
+      "Respuestas inteligentes",
+      "Análisis de conversaciones"
+    ],
+    ctaText: "Explorar IA",
+    ctaHref: "/contact"
+  },
+  {
+    icon: Wrench,
+    title: "Apps a Medida",
+    desc: "Aplicaciones web y móviles desarrolladas específicamente para las necesidades de tu negocio.",
+    items: [
+      "Análisis de requisitos",
+      "Desarrollo personalizado",
+      "Testing exhaustivo",
+      "Mantenimiento continuo"
+    ],
+    ctaText: "Discutir proyecto",
+    ctaHref: "/contact"
+  },
+  {
+    icon: Rocket,
+    title: "Optimización & Rediseño",
+    desc: "Mejora el rendimiento y la apariencia de tu sitio web existente para obtener mejores resultados.",
+    items: [
+      "Auditoría de rendimiento",
+      "Optimización de velocidad",
+      "Rediseño de interfaz",
+      "Mejoras de UX/UI"
+    ],
+    ctaText: "Evaluar sitio",
+    ctaHref: "/contact"
+  },
+  {
+    icon: LifeBuoy,
+    title: "Mantenimiento & Soporte",
+    desc: "Servicio continuo para mantener tu sitio web actualizado, seguro y funcionando perfectamente.",
+    items: [
+      "Actualizaciones de seguridad",
+      "Backups automáticos",
+      "Monitoreo 24/7",
+      "Soporte técnico prioritario"
+    ],
+    ctaText: "Contratar plan",
+    ctaHref: "/contact"
+  }
+];
 
 export default function ServicesPage() {
-  const contactHref = "/contact";
-
-  const services: ServiceItem[] = [
-    {
-      icon: "globe",
-      title: "Marketing Sites",
-      description: "Fast, secure and SEO‑friendly landing pages and corporate websites.",
-      bullets: ["Core Web Vitals", "Polished visual design", "Analytics setup"],
-    },
-    {
-      icon: "shoppingCart",
-      title: "E‑commerce",
-      description: "Online stores with Stripe/PayPal for physical or digital products.",
-      bullets: ["Secure checkout", "Email receipts", "Catalog management"],
-    },
-    {
-      icon: "bot",
-      title: "Chatbots & AI",
-      description: "OpenAI/GPT assistants integrated for support and automation.",
-      bullets: ["Automated FAQs", "Smart forms", "CRM integration"],
-    },
-    {
-      icon: "wrench",
-      title: "Custom Web Apps",
-      description: "Dashboards and CRUDs with Next.js + Node.js.",
-      bullets: ["Authentication", "Roles & permissions", "REST/GraphQL APIs"],
-    },
-    {
-      icon: "rocket",
-      title: "Optimization & Redesign",
-      description: "Performance, mobile‑first, accessibility and modern UX.",
-      bullets: ["Lighthouse audit", "A11y improvements", "UI refactor"],
-    },
-    {
-      icon: "lineChart",
-      title: "Maintenance & Support",
-      description: "Updates, monitoring and continuous improvements.",
-      bullets: ["Backups", "Safe updates", "Basic monitoring"],
-    },
-  ];
-
-  const valueBullets = [
-    "Fast delivery and clean code",
-    "Responsive and accessible design",
-    "Technical SEO and best practices",
-    "Clear communication and outcome focus",
-  ];
-
-  const faq: FAQItem[] = [
-    { q: "What are typical timelines?", a: "Depending on scope: landing pages 1–2 weeks; multi‑section sites 2–4; custom apps by plan." },
-    { q: "Do you offer fixed prices?", a: "Yes. After a short call and a scope brief, I provide a fixed price and deliverables." },
-    { q: "Is maintenance included?", a: "Optional monthly plans for updates, monitoring and minor improvements." },
-    { q: "Do I own the code?", a: "Yes, all project code and assets are yours upon delivery." },
-  ];
-
   return (
-    <div className="min-h-screen pb-12 bg-[var(--background)] text-[var(--foreground)]">
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--paper)', color: 'var(--ink)' }}>
+      <GsapEffects />
       <Navbar locale="en" />
       <ServicesContent
         locale="en"
-        heroTitle="Services"
-        heroSubtitle="Modern, tailored web development: fast sites, professional design and results‑first approach."
-        ctaLabel="Request a quote"
+        heroTitle="Web Development Services"
+        heroSubtitle="Full-stack solutions for modern businesses"
+        ctaLabel="Get Started"
         services={services}
         valueBullets={valueBullets}
         faq={faq}
-        contactHref={contactHref}
+        contactHref="mailto:verocussi@gmail.com"
       />
-      <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
-        © 2025 Verónica Cussi. All rights reserved.
+      <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm" style={{ color: 'var(--ink)', opacity: 0.6 }}>
+        <p>© 2024 Verónica Cussi. All rights reserved.</p>
       </footer>
     </div>
   );

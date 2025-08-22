@@ -65,7 +65,7 @@ export default function ServicesFrPage() {
   ];
 
   return (
-    <div className="min-h-screen pb-12 bg-[var(--background)] text-[var(--foreground)]">
+    <div className="min-h-screen pb-12" style={{ backgroundColor: 'var(--paper)', color: 'var(--ink)' }}>
       <Navbar locale="fr" />
       <ServicesContent
         locale="fr"
@@ -77,7 +77,7 @@ export default function ServicesFrPage() {
         faq={faq}
         contactHref={contactHref}
       />
-      <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
+      <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm" style={{ color: 'var(--ink)', opacity: 0.6 }}>
         © 2025 Verónica Cussi. Tous droits réservés.
       </footer>
     </div>

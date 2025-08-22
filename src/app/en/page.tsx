@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
-import { projectsFr } from "@/data/projects-fr";
+import { projectsEn } from "@/data/projects-en";
 import Image from "next/image";
 import GsapEffects from "@/components/GsapEffects";
 import GlitchTitle from "../_components/GlitchTitle";
@@ -11,13 +11,13 @@ import NeonBadge from "../_components/NeonBadge";
 import { Terminal, Sparkles, Globe, Wrench, Rocket } from "lucide-react";
 import { getTranslations } from "@/lib/i18n";
 
-export default function HomePageFr() {
-  const t = getTranslations('fr');
+export default function HomePageEn() {
+  const t = getTranslations('en');
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--paper)', color: 'var(--ink)' }}>
       <GsapEffects />
-      <Navbar locale="fr" />
+      <Navbar locale="en" />
       <Header
         title={t.heroTitle}
         description={t.heroDescription}
@@ -26,7 +26,7 @@ export default function HomePageFr() {
       />
       <Section title={t.projects}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsFr.map((p) => (
+          {projectsEn.map((p) => (
             <ProjectCard 
               key={p.title} 
               image={p.image} 
@@ -39,10 +39,8 @@ export default function HomePageFr() {
         </div>
       </Section>
       <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm" style={{ color: 'var(--ink)', opacity: 0.6 }}>
-        <p>© 2024 Verónica Cussi. Tous droits réservés.</p>
+        <p>© 2024 Verónica Cussi. All rights reserved.</p>
       </footer>
     </div>
   );
 }
-
-
