@@ -17,7 +17,7 @@ export default function HomePage() {
   const t = getTranslations('es');
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'var(--paper)', color: 'var(--ink)' }}>
+    <div className="min-h-screen bg-theme text-primary">
       <GsapEffects />
       <Navbar locale="es" />
       
@@ -25,7 +25,7 @@ export default function HomePage() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background with retro-radial and scanlines */}
         <div className="absolute inset-0 bg-retro-radial" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-100/20 to-slate-50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/5 to-ink/10" />
         
         {/* Scanlines animation */}
         <div className="absolute inset-0 opacity-20">
@@ -45,14 +45,12 @@ export default function HomePage() {
               <TypeHeading 
                 text={t.heroSubtitle}
                 className="text-xl md:text-2xl lg:text-3xl font-sans font-medium"
-                style={{ color: 'var(--ink)' }}
                 delay={0.5}
               />
             </div>
             
             {/* Description */}
-            <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-               style={{ color: 'var(--ink)' }}>
+            <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed text-secondary">
               {t.heroDescription}
             </p>
             
@@ -217,10 +215,7 @@ export default function HomePage() {
             <RetroButton 
               href="/contact"
               variant="ghost"
-              style={{ 
-                color: 'var(--ink)',
-                opacity: 0.7
-              }}
+              className="opacity-70"
             >
               {t.moreContact}
             </RetroButton>

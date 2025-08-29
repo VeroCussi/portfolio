@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     };
 
     if (groupId) {
-      (payload as any).groups = [groupId];
+      (payload as Record<string, unknown>).groups = [groupId];
     }
 
     if (messageFieldKey) {

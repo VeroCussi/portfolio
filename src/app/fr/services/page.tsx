@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import ServicesContent, { type ServiceItem, type FAQItem } from "../../services/_components/ServicesContent";
-// Icons are referenced by key inside the client component to avoid passing functions
+import ServicesContent, { type ServiceItem, type FAQItem } from "../../es/services-main/_components/ServicesContent";
 
 export const metadata: Metadata = {
   title: "Services | Veronica Cussi",
@@ -16,7 +15,7 @@ export default function ServicesFrPage() {
       icon: "globe",
       title: "Sites Vitrines",
       description: "Landing pages et sites corporatifs rapides et optimisés pour le SEO.",
-      bullets: ["Vitesse & Core Web Vitals", "Design professionnel", "Mise en place d’analytics"],
+      bullets: ["Vitesse & Core Web Vitals", "Design professionnel", "Mise en place d'analytics"],
     },
     {
       icon: "shoppingCart",
@@ -61,11 +60,11 @@ export default function ServicesFrPage() {
     { q: "Quels sont les délais habituels ?", a: "Selon la portée: landing 1–2 semaines; sites multi-sections 2–4; projets sur mesure selon planification." },
     { q: "Proposes-tu des prix fixes ?", a: "Oui, après un appel et un document de périmètre, je fixe prix et livrables." },
     { q: "Le maintenance est-elle incluse ?", a: "Optionnelle: plans mensuels pour mises à jour, monitoring et petites améliorations." },
-    { q: "Le code m’appartient-il ?", a: "Oui, le code et les assets sont à vous une fois livrés." },
+    { q: "Le code m'appartient-il ?", a: "Oui, le code et les assets sont à vous une fois livrés." },
   ];
 
   return (
-    <div className="min-h-screen pb-12" style={{ backgroundColor: 'var(--paper)', color: 'var(--ink)' }}>
+    <div className="min-h-screen bg-theme text-primary">
       <Navbar locale="fr" />
       <ServicesContent
         locale="fr"
@@ -77,7 +76,7 @@ export default function ServicesFrPage() {
         faq={faq}
         contactHref={contactHref}
       />
-      <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm" style={{ color: 'var(--ink)', opacity: 0.6 }}>
+      <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm text-muted">
         © 2025 Verónica Cussi. Tous droits réservés.
       </footer>
     </div>

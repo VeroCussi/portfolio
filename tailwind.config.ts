@@ -42,6 +42,34 @@ const config: Config = {
           DEFAULT: '#06B6D4',
           light: '#0891B2'
         },
+        // Custom theme colors
+        theme: {
+          DEFAULT: 'var(--paper)',
+          secondary: 'var(--ink-2)',
+        },
+        primary: {
+          DEFAULT: 'var(--text-primary)',
+          secondary: 'var(--text-secondary)',
+          muted: 'var(--text-muted)',
+        },
+        accent: {
+          DEFAULT: 'var(--accent)',
+          light: 'var(--accent-light)',
+        },
+      },
+      backgroundColor: {
+        theme: 'var(--paper)',
+        'theme-secondary': 'var(--ink-2)',
+      },
+      textColor: {
+        primary: 'var(--text-primary)',
+        secondary: 'var(--text-secondary)',
+        muted: 'var(--text-muted)',
+        accent: 'var(--accent)',
+        'accent-light': 'var(--accent-light)',
+      },
+      borderColor: {
+        theme: 'var(--border)',
       },
       backgroundImage: {
         'retro-radial': 'radial-gradient(circle at 20% 10%, rgba(147,51,234,.25), transparent 40%), radial-gradient(circle at 80% 80%, rgba(6,182,212,.18), transparent 40%)',

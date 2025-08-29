@@ -13,10 +13,9 @@ export default function ProjectCard({ image, title, description, techIcons, butt
     <div className="group w-full flex flex-col md:flex-row items-stretch gap-6 my-6 rounded-2xl border p-4 md:p-6 shadow-lg transition-all duration-300"
          style={{
            borderColor: 'var(--grid)',
-           backgroundColor: 'rgba(255, 255, 255, 0.8)'
+           backgroundColor: 'var(--paper)'
          }}>
-      <div className="relative md:w-[420px] aspect-[4/2.6] overflow-hidden rounded-2xl ring-1"
-           style={{ ringColor: 'var(--grid)' }}>
+      <div className="relative md:w-[420px] aspect-[4/2.6] overflow-hidden rounded-2xl ring-1 ring-grid">
         <Image
           src={image}
           alt={title}

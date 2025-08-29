@@ -13,7 +13,6 @@ export interface Translations {
   heroSubtitle: string;
   heroDescription: string;
   viewProjects: string;
-  services: string;
   
   // Sections
   projects: string;
@@ -67,7 +66,6 @@ export interface Translations {
   // Contact Page
   contactTitle: string;
   contactSubtitle: string;
-  contactDescription: string;
   sendMessage: string;
   preferDirect: string;
   whyWorkWithMe: string;
@@ -93,7 +91,6 @@ export const translations: Record<Locale, Translations> = {
     heroSubtitle: 'Construyo soluciones web con IA, rendimiento y diseño retro-tech',
     heroDescription: 'Full Stack Developer apasionada por crear experiencias digitales únicas. Especializada en WordPress, React, Node.js y explorando el mundo de la IA.',
     viewProjects: 'Ver proyectos',
-    services: 'Servicios',
     
     // Sections
     projects: 'Proyectos Destacados',
@@ -147,7 +144,6 @@ export const translations: Record<Locale, Translations> = {
     // Contact Page
     contactTitle: 'Contacto',
     contactSubtitle: 'Hablemos sobre tu proyecto',
-    contactDescription: '¿Tienes una idea que te gustaría hacer realidad? ¿Necesitas ayuda con tu sitio web? ¡Me encantaría escuchar sobre tu proyecto y cómo puedo ayudarte!',
     sendMessage: 'Envíame un mensaje',
     preferDirect: '¿Prefieres contactarme directamente?',
     whyWorkWithMe: '¿Por qué trabajar conmigo?',
@@ -172,7 +168,6 @@ export const translations: Record<Locale, Translations> = {
     heroSubtitle: 'Je construis des solutions web avec IA, performance et design retro-tech',
     heroDescription: 'Développeuse Full Stack passionnée par la création d\'expériences numériques uniques. Spécialisée en WordPress, React, Node.js et explorant le monde de l\'IA.',
     viewProjects: 'Voir les projets',
-    services: 'Services',
     
     // Sections
     projects: 'Projets en Vedette',
@@ -226,7 +221,6 @@ export const translations: Record<Locale, Translations> = {
     // Contact Page
     contactTitle: 'Contact',
     contactSubtitle: 'Parlons de votre projet',
-    contactDescription: 'Vous avez une idée que vous aimeriez concrétiser ? Vous avez besoin d\'aide avec votre site web ? J\'adorerais entendre parler de votre projet et comment je peux vous aider !',
     sendMessage: 'Envoyez-moi un message',
     preferDirect: 'Vous préférez me contacter directement ?',
     whyWorkWithMe: 'Pourquoi travailler avec moi ?',
@@ -251,7 +245,6 @@ export const translations: Record<Locale, Translations> = {
     heroSubtitle: 'I build web solutions with AI, performance and retro-tech design',
     heroDescription: 'Full Stack Developer passionate about creating unique digital experiences. Specialized in WordPress, React, Node.js and exploring the world of AI.',
     viewProjects: 'View Projects',
-    services: 'Services',
     
     // Sections
     projects: 'Featured Projects',
@@ -305,7 +298,6 @@ export const translations: Record<Locale, Translations> = {
     // Contact Page
     contactTitle: 'Contact',
     contactSubtitle: 'Let\'s talk about your project',
-    contactDescription: 'Have an idea you\'d like to make reality? Need help with your website? I\'d love to hear about your project and how I can help!',
     sendMessage: 'Send me a message',
     preferDirect: 'Prefer to contact me directly?',
     whyWorkWithMe: 'Why work with me?',

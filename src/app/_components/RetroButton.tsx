@@ -12,6 +12,7 @@ interface RetroButtonProps {
   iconRight?: LucideIcon;
   className?: string;
   disabled?: boolean;
+  prefetch?: boolean;
 }
 
 const RetroButton: React.FC<RetroButtonProps> = ({
@@ -24,6 +25,7 @@ const RetroButton: React.FC<RetroButtonProps> = ({
   iconRight: IconRight,
   className = '',
   disabled = false,
+  prefetch = false,
 }) => {
   const baseClasses = `
     inline-flex items-center justify-center gap-2 px-6 py-3
@@ -34,33 +36,20 @@ const RetroButton: React.FC<RetroButtonProps> = ({
     relative overflow-hidden group
   `;
 
-  const getVariantStyles = (variant: string) => {
+  const getVariantClasses = (variant: string) => {
     switch (variant) {
       case 'primary':
-        return {
-          backgroundColor: 'var(--ink-2)',
-          color: 'var(--paper)',
-          borderColor: 'var(--grid)'
-        };
+        return 'bg-theme-secondary text-paper border-theme hover:bg-opacity-90';
       case 'secondary':
-        return {
-          backgroundColor: 'var(--ink-2)',
-          color: 'var(--paper)',
-          borderColor: 'var(--grid)'
-        };
+        return 'bg-theme-secondary text-paper border-theme hover:bg-opacity-90';
       case 'ghost':
-        return {
-          backgroundColor: 'transparent',
-          color: 'var(--ink)',
-          borderColor: 'var(--grid)'
-        };
+        return 'bg-transparent text-primary border-theme hover:bg-theme-secondary hover:text-primary';
       default:
-        return {};
+        return '';
     }
   };
 
-  const buttonClasses = `${baseClasses} ${className}`;
-  const variantStyles = getVariantStyles(variant);
+  const buttonClasses = `${baseClasses} ${getVariantClasses(variant)} ${className}`;
 
   const content = (
     <>
@@ -72,7 +61,7 @@ const RetroButton: React.FC<RetroButtonProps> = ({
 
   if (asChild && href) {
     return (
-      <Link href={href} className={buttonClasses} style={variantStyles}>
+      <Link href={href} className={buttonClasses} prefetch={prefetch}>
         {content}
       </Link>
     );
@@ -80,7 +69,7 @@ const RetroButton: React.FC<RetroButtonProps> = ({
 
   if (href) {
     return (
-      <Link href={href} className={buttonClasses} style={variantStyles}>
+      <Link href={href} className={buttonClasses} prefetch={prefetch}>
         {content}
       </Link>
     );
@@ -90,7 +79,6 @@ const RetroButton: React.FC<RetroButtonProps> = ({
     <button
       type="button"
       className={buttonClasses}
-      style={variantStyles}
       onClick={onClick}
       disabled={disabled}
     >

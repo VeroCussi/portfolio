@@ -26,13 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
-        className={`${inter.variable} ${spaceMono.variable} antialiased`}
-        style={{
-          backgroundColor: 'var(--paper)',
-          color: 'var(--ink)'
-        }}
+        className={`${inter.variable} ${spaceMono.variable} antialiased bg-theme text-primary`}
+        suppressHydrationWarning={false}
       >
         {children}
       </body>

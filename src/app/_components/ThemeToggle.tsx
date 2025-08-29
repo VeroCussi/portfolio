@@ -10,24 +10,53 @@ export default function ThemeToggle() {
   useEffect(() => {
     setMounted(true);
     
-    // Get theme from localStorage
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'dark') {
-      setTheme('dark');
+    // Get theme from localStorage or system preference
+    const getInitialTheme = () => {
+      if (typeof window !== 'undefined') {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark' || storedTheme === 'light') {
+          return storedTheme;
+        }
+        
+        // Check system preference
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+      }
+      return 'light';
+    };
+
+    const initialTheme = getInitialTheme();
+    setTheme(initialTheme);
+    
+    // Apply theme to document
+    if (initialTheme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
-      setTheme('light');
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
     }
     
-    // Force a reflow to ensure CSS variables are updated
-    document.documentElement.offsetHeight;
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      if (!localStorage.getItem('theme')) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        setTheme(newTheme);
+        if (newTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+    };
+    
+    mediaQuery.addEventListener('change', handleChange);
+    
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
-    console.log('Toggling theme to:', newTheme);
     
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
@@ -35,41 +64,30 @@ export default function ThemeToggle() {
     // Apply theme to document
     if (newTheme === 'dark') {
       document.documentElement.classList.add('dark');
-      console.log('Added dark class to document');
     } else {
       document.documentElement.classList.remove('dark');
-      console.log('Removed dark class from document');
     }
     
     // Force a reflow to ensure CSS variables are updated
-    document.documentElement.offsetHeight;
+    void document.documentElement.offsetHeight;
   };
 
   if (!mounted) {
     return (
-      <div className="w-10 h-10 rounded-2xl border" 
-           style={{
-             backgroundColor: 'var(--paper)',
-             borderColor: 'var(--grid)'
-           }} />
+      <div className="w-10 h-10 rounded-2xl border border-theme bg-theme animate-pulse" />
     );
   }
 
   return (
     <button
       onClick={toggleTheme}
-      className="w-10 h-10 rounded-2xl border hover:shadow-lg transition-all duration-300 flex items-center justify-center"
-      style={{
-        backgroundColor: 'var(--paper)',
-        borderColor: 'var(--grid)',
-        color: 'var(--ink)'
-      }}
+      className="w-10 h-10 rounded-2xl border border-theme bg-theme hover:shadow-lg transition-all duration-300 flex items-center justify-center text-primary"
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {theme === 'dark' ? (
-        <Sun className="w-5 h-5" style={{ color: 'rgb(147, 51, 234)' }} />
+        <Sun className="w-5 h-5 text-accent" />
       ) : (
-        <Moon className="w-5 h-5" style={{ color: 'rgb(6, 182, 212)' }} />
+        <Moon className="w-5 h-5 text-accent-light" />
       )}
     </button>
   );

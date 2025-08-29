@@ -11,7 +11,7 @@ export default function Header({ title, description, cvHref, cvLabel }: HeaderPr
   return (
     <header className="w-full max-w-5xl mx-auto mt-10 p-6 md:p-10 rounded-3xl border shadow-sm backdrop-blur bg-grid"
              style={{
-               backgroundColor: 'rgba(255, 255, 255, 0.6)',
+               backgroundColor: 'var(--paper)',
                borderColor: 'var(--grid)'
              }}>
       <div className="flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-8">
@@ -55,7 +55,7 @@ export default function Header({ title, description, cvHref, cvLabel }: HeaderPr
             </a>
           </div>
         </div>
-        <Image src="/vero/Vero linkedin.jpeg" alt="Verónica Cussi" width={256} height={256} className="rounded-3xl shadow-lg ring-1" style={{ ringColor: 'var(--grid)' }} />
+        <Image src="/vero/Vero linkedin.jpeg" alt="Verónica Cussi" width={256} height={256} className="rounded-3xl shadow-lg ring-1 ring-grid" />
       </div>
     </header>
   );
