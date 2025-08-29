@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import ServicesContent from "../../es/services-main/_components/ServicesContent";
 
 const services = [
@@ -98,9 +99,7 @@ export default function ServicesEnPage() {
         faq={faq}
         contactHref="mailto:verocussi@gmail.com"
       />
-      <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm text-muted">
-        <p>© 2024 Verónica Cussi. All rights reserved.</p>
-      </footer>
+      <Footer locale="en" />
     </div>
   );
 }

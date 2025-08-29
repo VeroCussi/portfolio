@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import ServicesContent, { type ServiceItem, type FAQItem } from "../../es/services-main/_components/ServicesContent";
 
 export const metadata: Metadata = {
@@ -76,9 +77,7 @@ export default function ServicesFrPage() {
         faq={faq}
         contactHref={contactHref}
       />
-      <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm text-muted">
-        © 2025 Verónica Cussi. Tous droits réservés.
-      </footer>
+      <Footer locale="fr" />
     </div>
   );
 }

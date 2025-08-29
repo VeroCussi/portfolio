@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import ContactForm from "../../es/contact-main/_components/ContactForm";
 
 export const metadata: Metadata = {
@@ -25,9 +26,7 @@ export default function ContactFrPage() {
           </p>
         </div>
       </div>
-      <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm text-muted">
-        © 2025 Verónica Cussi. Tous droits réservés.
-      </footer>
+      <Footer locale="fr" />
     </div>
   );
 }

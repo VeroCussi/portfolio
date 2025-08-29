@@ -46,7 +46,7 @@ export default function LanguageSelector({ currentLocale }: LanguageSelectorProp
       return path;
     }
     
-    // Si el idioma seleccionado es español, remover cualquier prefijo de idioma
+    // Si el idioma seleccionado es español (por defecto), remover cualquier prefijo de idioma
     if (locale === 'es') {
       if (path.startsWith('/fr/')) return path.slice(3);
       if (path.startsWith('/en/')) return path.slice(3);
@@ -63,7 +63,14 @@ export default function LanguageSelector({ currentLocale }: LanguageSelectorProp
     
     // Si ya hay un prefijo de idioma, reemplazarlo
     if (path.startsWith('/fr/') || path.startsWith('/en/')) {
-      return `/${locale}${path.slice(3)}`;
+      // Extraer la parte de la ruta después del prefijo de idioma
+      const pathWithoutLocale = path.slice(3);
+      return `/${locale}${pathWithoutLocale}`;
+    }
+    
+    // Si la ruta es exactamente /en o /fr, reemplazarla
+    if (path === '/en' || path === '/fr') {
+      return `/${locale}`;
     }
     
     // Si no hay prefijo de idioma, agregar el nuevo

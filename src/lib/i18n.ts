@@ -81,6 +81,11 @@ export interface Translations {
   waitingMessage: string;
 }
 
+// Función para obtener el año actual
+function getCurrentYear(): string {
+  return new Date().getFullYear().toString();
+}
+
 export const translations: Record<Locale, Translations> = {
   es: {
     // Navigation
@@ -89,8 +94,8 @@ export const translations: Record<Locale, Translations> = {
     
     // Hero Section
     heroSubtitle: 'Construyo soluciones web con IA, rendimiento y diseño retro-tech',
-    heroDescription: 'Full Stack Developer apasionada por crear experiencias digitales únicas. Especializada en WordPress, React, Node.js y explorando el mundo de la IA.',
-    viewProjects: 'Ver proyectos',
+    heroDescription: 'Desarrolladora Full Stack apasionada por crear experiencias digitales únicas. Especializada en WordPress, React, Node.js y explorando el mundo de la IA.',
+    viewProjects: 'Ver Proyectos',
     
     // Sections
     projects: 'Proyectos Destacados',
@@ -105,8 +110,8 @@ export const translations: Record<Locale, Translations> = {
     tools: 'Herramientas & IA',
     
     // About
-    aboutDescription1: 'Hola, soy Verónica, una desarrolladora Full Stack apasionada que comenzó su viaje en WordPress. Empecé creando sitios web y blogs, lo que despertó mi interés en el desarrollo frontend y las experiencias de usuario.',
-    aboutDescription2: 'Mi curiosidad me llevó a explorar campos como la inteligencia artificial, por lo que también estoy aprendiendo Python para expandir mis habilidades y sumergirme en esta fascinante área de la tecnología.',
+    aboutDescription1: 'Hola, soy Verónica, una Desarrolladora Full Stack apasionada que comenzó su camino con WordPress. Empecé creando sitios web y blogs, lo que despertó mi interés por el desarrollo frontend y las experiencias de usuario.',
+    aboutDescription2: 'Mi curiosidad me llevó a explorar campos como la inteligencia artificial, por eso también estoy aprendiendo Python para expandir mis habilidades y sumergirme en esta fascinante área de la tecnología.',
     aboutDescription3: 'Más allá del código, tengo un amor por explorar el mundo y capturar su belleza a través de la fotografía. También me fascina profundamente el idioma y la cultura japonesa.',
     
     // Contact
@@ -116,7 +121,7 @@ export const translations: Record<Locale, Translations> = {
     moreContact: 'Más formas de contacto →',
     
     // Footer
-    footerText: '© 2024 Verónica Cussi. Construido con Next.js y mucho ❤️ retro-tech.',
+    footerText: `© ${getCurrentYear()} Verónica Cussi. Construido con Next.js y mucho ❤️`,
     
     // Services Page
     servicesTitle: 'Servicios',
@@ -156,7 +161,7 @@ export const translations: Record<Locale, Translations> = {
     availabilityDesc2: 'Horarios flexibles y adaptables a tu zona horaria.',
     availabilityDesc3: 'Respuesta rápida en horario laboral (CET).',
     responseTime: 'Tiempo de respuesta: 24h',
-    waitingMessage: '© 2024 Verónica Cussi. ¡Espero tu mensaje!'
+    waitingMessage: `© ${getCurrentYear()} Verónica Cussi. ¡Espero tu mensaje!`
   },
   
   fr: {
@@ -193,7 +198,7 @@ export const translations: Record<Locale, Translations> = {
     moreContact: 'Plus de moyens de contact →',
     
     // Footer
-    footerText: '© 2024 Verónica Cussi. Construit avec Next.js et beaucoup d\'❤️ retro-tech.',
+    footerText: `© ${getCurrentYear()} Verónica Cussi. Construit avec Next.js et beaucoup d\'❤️ retro-tech.`,
     
     // Services Page
     servicesTitle: 'Services',
@@ -214,8 +219,8 @@ export const translations: Record<Locale, Translations> = {
     showcaseSites: 'Sites Vitrine',
     ecommerce: 'E-commerce',
     chatbotsAI: 'Chatbots & IA',
-    customApps: 'Applications Sur Mesure',
-    optimization: 'Optimisation & Refonte',
+    customApps: 'Apps sur Mesure',
+    optimization: 'Optimisation & Redesign',
     maintenance: 'Maintenance & Support',
     
     // Contact Page
@@ -233,7 +238,7 @@ export const translations: Record<Locale, Translations> = {
     availabilityDesc2: 'Horaires flexibles et adaptables à votre fuseau horaire.',
     availabilityDesc3: 'Réponse rapide pendant les heures de bureau (CET).',
     responseTime: 'Temps de réponse : 24h',
-    waitingMessage: '© 2024 Verónica Cussi. J\'attends votre message !'
+    waitingMessage: `© ${getCurrentYear()} Verónica Cussi. J\'attends votre message !`
   },
   
   en: {
@@ -270,7 +275,7 @@ export const translations: Record<Locale, Translations> = {
     moreContact: 'More ways to contact →',
     
     // Footer
-    footerText: '© 2024 Verónica Cussi. Built with Next.js and lots of ❤️ retro-tech.',
+    footerText: `© ${getCurrentYear()} Verónica Cussi. Built with Next.js and lots of ❤️ retro-tech.`,
     
     // Services Page
     servicesTitle: 'Services',
@@ -310,7 +315,7 @@ export const translations: Record<Locale, Translations> = {
     availabilityDesc2: 'Flexible hours adaptable to your timezone.',
     availabilityDesc3: 'Quick response during business hours (CET).',
     responseTime: 'Response time: 24h',
-    waitingMessage: '© 2024 Verónica Cussi. Waiting for your message!'
+    waitingMessage: `© ${getCurrentYear()} Verónica Cussi. Waiting for your message!`
   }
 };
 
