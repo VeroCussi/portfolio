@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import GsapEffects from "@/components/GsapEffects";
 import ServicesContent from "./_components/ServicesContent";
+import Footer from "@/components/Footer";
 
 const services = [
   {
@@ -72,37 +73,35 @@ const services = [
 ];
 
 const valueBullets = [
-  "Livraisons rapides et code propre",
-  "Design responsive et accessible",
-  "SEO technique et bonnes pratiques",
-  "Communication claire et focus résultats",
+  "Entregas rápidas y código limpio",
+  "Diseño responsive y accesible",
+  "SEO técnico y buenas prácticas",
+  "Comunicación clara y enfoque en resultados",
 ];
 
 const faq = [
-  { q: "Quels sont les délais habituels ?", a: "Selon la portée: landing 1–2 semaines; sites multi-sections 2–4; projets sur mesure selon planification." },
-  { q: "Proposes-tu des prix fixes ?", a: "Oui, après un appel et un document de périmètre, je fixe prix et livrables." },
-  { q: "Le maintenance est-elle incluse ?", a: "Optionnelle: plans mensuels pour mises à jour, monitoring et petites améliorations." },
-  { q: "Le code m'appartient-il ?", a: "Oui, le code et les assets sont à vous une fois livrés." },
+  { q: "¿Cuáles son los plazos habituales?", a: "Dependiendo del alcance: landing 1-2 semanas; sitios multi-secciones 2-4; proyectos a medida según planificación." },
+  { q: "¿Ofreces precios fijos?", a: "Sí, después de una llamada y un documento de alcance, establezco precios y entregables." },
+  { q: "¿Está incluido el mantenimiento?", a: "Opcional: planes mensuales para actualizaciones, monitoreo y pequeñas mejoras." },
+  { q: "¿El código me pertenece?", a: "Sí, el código y los assets son tuyos una vez entregados." },
 ];
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-theme text-primary">
       <GsapEffects />
-      <Navbar locale="en" />
+      <Navbar locale="es" />
       <ServicesContent
-        locale="en"
-        heroTitle="Web Development Services"
-        heroSubtitle="Full-stack solutions for modern businesses"
-        ctaLabel="Get Started"
+        locale="es"
+        heroTitle="Servicios"
+        heroSubtitle="Desarrollo web moderno y a medida: sitios rápidos, diseño profesional y enfoque en resultados."
+        ctaLabel="Solicitar Presupuesto"
         services={services}
         valueBullets={valueBullets}
         faq={faq}
         contactHref="mailto:verocussi@gmail.com"
       />
-      <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm text-muted">
-        <p>© 2024 Verónica Cussi. All rights reserved.</p>
-      </footer>
+      <Footer locale="es" />
     </div>
   );
 }

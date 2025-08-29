@@ -12,6 +12,7 @@ import RetroButton from "./_components/RetroButton";
 import NeonBadge from "./_components/NeonBadge";
 import { Terminal, Sparkles, Globe, Wrench, Rocket } from "lucide-react";
 import { getTranslations } from "@/lib/i18n";
+import Footer from "@/components/Footer";
 
 export default function HomePage() {
   const t = getTranslations('es');
@@ -224,15 +225,7 @@ export default function HomePage() {
       </Section>
 
       {/* Footer */}
-      <footer className="w-full max-w-5xl mx-auto mt-16 mb-8 text-center">
-        <div className="border-t pt-8"
-             style={{ borderColor: 'var(--grid)' }}>
-          <p className="text-sm"
-             style={{ color: 'var(--ink)', opacity: 0.6 }}>
-            {t.footerText}
-          </p>
-        </div>
-      </footer>
+      <Footer locale="es" />
     </div>
   );
 }

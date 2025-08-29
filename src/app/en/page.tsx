@@ -9,6 +9,7 @@ import RetroButton from "../_components/RetroButton";
 import NeonBadge from "../_components/NeonBadge";
 import { Globe, Sparkles } from "lucide-react";
 import { getTranslations } from "@/lib/i18n";
+import Footer from "@/components/Footer";
 
 export default function HomePageEn() {
   const t = getTranslations('en');
@@ -97,9 +98,7 @@ export default function HomePageEn() {
           ))}
         </div>
       </Section>
-      <footer className="w-full max-w-5xl mx-auto mt-6 text-center text-sm text-muted">
-        <p>© 2024 Verónica Cussi. All rights reserved.</p>
-      </footer>
+      <Footer locale="en" />
     </div>
   );
 }

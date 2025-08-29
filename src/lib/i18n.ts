@@ -198,7 +198,7 @@ export const translations: Record<Locale, Translations> = {
     moreContact: 'Plus de moyens de contact →',
     
     // Footer
-    footerText: `© ${getCurrentYear()} Verónica Cussi. Construit avec Next.js et beaucoup d\'❤️ retro-tech.`,
+    footerText: `© ${getCurrentYear()} Verónica Cussi. Construit avec Next.js et beaucoup de ❤️`,
     
     // Services Page
     servicesTitle: 'Services',
@@ -275,7 +275,7 @@ export const translations: Record<Locale, Translations> = {
     moreContact: 'More ways to contact →',
     
     // Footer
-    footerText: `© ${getCurrentYear()} Verónica Cussi. Built with Next.js and lots of ❤️ retro-tech.`,
+    footerText: `© ${getCurrentYear()} Verónica Cussi. Built with Next.js and lots of ❤️.`,
     
     // Services Page
     servicesTitle: 'Services',
