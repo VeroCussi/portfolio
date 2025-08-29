@@ -1,68 +1,86 @@
 import { NextResponse } from "next/server";
+import { Resend } from 'resend';
 
-export async function POST(request: Request) {
+const API_BASE = "https://api.mailerlite.com/api/v2";
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+export async function POST(req: Request) {
   try {
-    const body = await request.json();
-    const { name, email, message } = body ?? {};
+    const { name, email, message } = await req.json();
+    
     if (!name || !email || !message) {
       return NextResponse.json({ ok: false, error: "Missing fields" }, { status: 400 });
     }
-    const apiKey = process.env.MAILERLITE_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json(
-        { ok: false, error: "Server not configured (missing MAILERLITE_API_KEY)" },
-        { status: 500 }
-      );
+    
+    if (!process.env.MAILERLITE_CLASSIC_API_KEY) {
+      return NextResponse.json({ ok: false, error: "Missing MAILERLITE_CLASSIC_API_KEY" }, { status: 500 });
     }
 
     const groupId = process.env.MAILERLITE_GROUP_ID;
-    const messageFieldKey = process.env.MAILERLITE_MESSAGE_FIELD_KEY; // optional custom field key for message
+    const messageFieldKey = process.env.MAILERLITE_MESSAGE_FIELD_KEY;
 
-    const apiBase = "https://connect.mailerlite.com/api";
+    // Si tenemos groupId, añadimos el contacto directamente al grupo
+    const url = groupId
+      ? `${API_BASE}/groups/${groupId}/subscribers`
+      : `${API_BASE}/subscribers`;
 
-    const payload: { email: string; fields: Record<string, string>; groups?: string[] } = {
+    const body: any = {
       email,
-      fields: {
-        name,
-      },
+      name,
+      ...(messageFieldKey ? { fields: { [messageFieldKey]: message } } : {}),
+      ...(groupId ? { resubscribe: true, autoresponders: true, type: "active" } : {}),
     };
 
-    if (groupId) {
-      (payload as Record<string, unknown>).groups = [groupId];
-    }
-
-    if (messageFieldKey) {
-      payload.fields[messageFieldKey] = message;
-    }
-
-    const mlRes = await fetch(`${apiBase}/subscribers`, {
+    const resp = await fetch(url, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "X-MailerLite-ApiKey": process.env.MAILERLITE_CLASSIC_API_KEY as string,
       },
-      body: JSON.stringify(payload),
-      // Revalidate disabled: we want a fresh network call
-      cache: "no-store",
+      body: JSON.stringify(body),
     });
 
-    if (!mlRes.ok) {
-      if (mlRes.status === 409 || mlRes.status === 422) {
-        // Already subscribed or validation error like "already exists" → treat as success
-        return NextResponse.json({ ok: true });
+    const data = await resp.json().catch(() => ({}));
+
+    // Si el suscriptor ya existe en el grupo, lo tratamos como éxito
+    if (!resp.ok) {
+      if (resp.status === 409 || resp.status === 422) {
+        return NextResponse.json({ ok: true, message: "Subscriber already exists" });
       }
-      const errorText = await mlRes.text();
-      console.error("MailerLite API error:", mlRes.status, errorText);
       return NextResponse.json(
-        { ok: false, error: "MailerLite request failed" },
-        { status: 502 }
+        { ok: false, error: data?.error?.message || data?.message || "MailerLite Classic error", details: data },
+        { status: resp.status }
       );
     }
 
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json({ ok: false }, { status: 500 });
+    // ENVIAR NOTIFICACIÓN A TU EMAIL PERSONAL
+    try {
+      if (process.env.RESEND_API_KEY && process.env.NOTIFICATION_EMAIL) {
+        await resend.emails.send({
+          from: 'Portfolio <noreply@tu-dominio.com>',
+          to: [process.env.NOTIFICATION_EMAIL],
+          subject: `Nuevo mensaje desde tu Portfolio - ${name}`,
+          html: `
+            <h2>Nuevo mensaje de contacto recibido</h2>
+            <p><strong>Nombre:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Mensaje:</strong></p>
+            <p>${message.replace(/\n/g, '<br>')}</p>
+            <hr>
+            <p><em>Mensaje enviado desde tu portfolio el ${new Date().toLocaleString('es-ES')}</em></p>
+          `,
+        });
+        console.log('Notificación enviada a tu email personal');
+      }
+    } catch (emailError) {
+      console.error('Error enviando notificación:', emailError);
+      // No fallamos la petición principal si falla el email
+    }
+
+    return NextResponse.json({ ok: true, data });
+  } catch (err: any) {
+    console.error("Server error:", err);
+    return NextResponse.json({ ok: false, error: err?.message || "Server error" }, { status: 500 });
   }
 }
 
