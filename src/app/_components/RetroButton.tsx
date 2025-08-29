@@ -39,11 +39,11 @@ const RetroButton: React.FC<RetroButtonProps> = ({
   const getVariantClasses = (variant: string) => {
     switch (variant) {
       case 'primary':
-        return 'bg-theme-secondary text-paper border-theme hover:bg-opacity-90';
+        return 'bg-violet-600 text-white border-violet-600 hover:bg-violet-700 hover:border-violet-700 dark:bg-violet-500 dark:text-white dark:border-violet-500 dark:hover:bg-violet-600 dark:hover:border-violet-600';
       case 'secondary':
-        return 'bg-theme-secondary text-paper border-theme hover:bg-opacity-90';
+        return 'bg-cyan-600 text-white border-cyan-600 hover:bg-cyan-700 hover:border-cyan-700 dark:bg-cyan-500 dark:text-white dark:border-cyan-500 dark:hover:bg-cyan-600 dark:hover:border-cyan-600';
       case 'ghost':
-        return 'bg-transparent text-primary border-theme hover:bg-theme-secondary hover:text-primary';
+        return 'bg-transparent text-primary border-theme hover:bg-theme-secondary hover:text-primary dark:text-white dark:border-gray-600 dark:hover:bg-gray-800 dark:hover:text-white';
       default:
         return '';
     }

@@ -142,3 +142,16 @@ html {
 .bg-theme-secondary {
   background-color: var(--ink-2);
 }
+
+/* Badge text colors for dark mode */
+.dark .badge-violet {
+  color: #14532d !important; /* text-lime-900 */
+}
+
+.dark .badge-cyan {
+  color: #0c4a6e !important; /* text-cyan-900 */
+}
+
+.dark .badge-lime {
+  color: #14532d !important; /* text-lime-900 */
+}
