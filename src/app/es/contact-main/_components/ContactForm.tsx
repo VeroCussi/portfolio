@@ -112,7 +112,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium transition shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 disabled:opacity-60 bg-theme-secondary text-paper hover:bg-opacity-90"
+          className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium transition shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 disabled:opacity-60 bg-theme-secondary text-paper hover:bg-opacity-90 contact-button"
         >
           {t.submit}
         </button>
