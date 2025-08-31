@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { Resend } from 'resend';
 
 const API_BASE = "https://api.mailerlite.com/api/v2";
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Definir interfaces para los tipos
 interface MailerLiteBody {
@@ -73,6 +72,7 @@ export async function POST(req: Request) {
     // ENVIAR NOTIFICACIÓN A TU EMAIL PERSONAL
     try {
       if (process.env.RESEND_API_KEY && process.env.NOTIFICATION_EMAIL) {
+        const resend = new Resend(process.env.RESEND_API_KEY);
         await resend.emails.send({
           from: 'Portfolio <noreply@tu-dominio.com>',
           to: [process.env.NOTIFICATION_EMAIL],
