@@ -26,7 +26,7 @@ export default function GsapEffects() {
               y: -100, 
               opacity: 0, 
               duration: 1, 
-              ease: "bounce.out" 
+              ease: "power3.out" 
             });
           }
 

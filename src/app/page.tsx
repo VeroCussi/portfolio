@@ -2,8 +2,8 @@
 
 import Navbar from "@/components/Navbar";
 import Section from "@/components/Section";
-import ProjectCard from "@/components/ProjectCard";
-import { projectsEn } from "@/data/projects-en";
+import ProjectsSection from "@/components/sections/ProjectsSection";
+
 import Image from "next/image";
 import GsapEffects from "@/components/GsapEffects";
 import GlitchTitle from "./_components/GlitchTitle";
@@ -88,20 +88,10 @@ export default function HomePage() {
       </section>
 
       {/* Projects Section */}
-      <Section id="projects" title={t.projects}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsEn.map((p) => (
-            <ProjectCard 
-              key={p.title} 
-              image={p.image} 
-              title={p.title} 
-              description={p.description} 
-              techIcons={p.techIcons} 
-              buttons={p.buttons} 
-            />
-          ))}
-        </div>
-      </Section>
+      <ProjectsSection 
+        title={t.projects}
+        subtitle="Una selección de mi trabajo más reciente en desarrollo web, WordPress y aplicaciones sociales"
+      />
 
       {/* Skills Section */}
       <Section title={t.skills}>
