@@ -191,7 +191,7 @@ export default function HomePage() {
             {t.contactDescription}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center my-5">
             <RetroButton 
               href="mailto:verocussi@gmail.com"
               variant="primary"
@@ -212,7 +212,7 @@ export default function HomePage() {
             </RetroButton>
           </div>
           
-          <div className="pt-4">
+          {/* <div className="pt-4">
             <RetroButton 
               href="/contact"
               variant="ghost"
@@ -220,7 +220,7 @@ export default function HomePage() {
             >
               {t.moreContact}
             </RetroButton>
-          </div>
+          </div> */}
         </div>
       </Section>
 

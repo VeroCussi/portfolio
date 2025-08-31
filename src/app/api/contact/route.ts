@@ -4,6 +4,23 @@ import { Resend } from 'resend';
 const API_BASE = "https://api.mailerlite.com/api/v2";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Definir interfaces para los tipos
+interface MailerLiteBody {
+  email: string;
+  name: string;
+  fields?: Record<string, string>;
+  resubscribe?: boolean;
+  autoresponders?: boolean;
+  type?: string;
+}
+
+interface MailerLiteError {
+  error?: {
+    message?: string;
+  };
+  message?: string;
+}
+
 export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json();
@@ -24,7 +41,7 @@ export async function POST(req: Request) {
       ? `${API_BASE}/groups/${groupId}/subscribers`
       : `${API_BASE}/subscribers`;
 
-    const body: any = {
+    const body: MailerLiteBody = {
       email,
       name,
       ...(messageFieldKey ? { fields: { [messageFieldKey]: message } } : {}),
@@ -78,9 +95,10 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ ok: true, data });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Server error:", err);
-    return NextResponse.json({ ok: false, error: err?.message || "Server error" }, { status: 500 });
+    const errorMessage = err instanceof Error ? err.message : "Server error";
+    return NextResponse.json({ ok: false, error: errorMessage }, { status: 500 });
   }
 }
 
